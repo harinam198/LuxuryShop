@@ -1,0 +1,62 @@
+﻿/* quantri */
+
+.admin {
+    background-image: url(/Content/image/admin1.jpg);
+}
+
+    .admin h3 {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 20px 0;
+        color: white;
+    }
+
+    .admin p {
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .admin input {
+        padding: 10px;
+        width: 70%;
+        margin: 10px 0;
+    }
+
+    .admin #btnSelectImage,
+    .admin #btnSelectImage2 {
+        margin: 10px 0;
+        background: white;
+        color: black;
+        width: 20%;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: .3s all;
+    }
+
+        .admin #btnSelectImage:hover,
+        .admin #btnSelectImage2:hover {
+            color: gray;
+        }
+
+    .admin #radio {
+        width: 10%;
+        height: 30px;
+        color: black;
+    }
+
+    .admin span {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .admin button {
+        padding: 20px;
+        color: white;
+        border: none;
+        margin: 20px 0 20px 70px;
+        font-size: 20px;
+        font-weight: 600;
+        background-color: black;
+    }

@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="~/Content/CSS/Dashboard.css" rel="stylesheet" />*@
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<section>
+    <div class="admin">
+        <form id="danhsachsanpham-form" action="/" method="post">
+            <div class="wrap">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Sản Phẩm</h3>
+                        <p>Tên Sản Phẩm</p>
+                        <input type="text" name="Name" placeholder="Tên sản phẩm">
+                        <p>Giá sản phẩm</p>
+                        <input type="text" name="Price" placeholder="Giá sản phẩm">
+                        <p>Ảnh sản phẩm</p>
+                        <input type="text" id="txtImage" name="Img">
+                        <p id="btnSelectImage">Chọn ảnh</p>
+                        <p>Ảnh sản phẩm</p>
+                        @*category*@
+                        <h3>Nhóm Sản Phẩm</h3>
+                        <input type="radio" id="radio" value="0" name="Category" checked>
+                        <span>Điện thoại </span>
+                        <input type="radio" id="radio" value="1" name="Category">
+                        <span>Tai nghe</span>
+                        <input type="radio" id="radio" value="2" name="Category">
+                        <span>Đồng hồ</span>
+                        <input type="radio" id="radio" value="NULL" name="BestSeller" checked>
+                        <span>Không BestSeller</span>
+                        <input type="radio" id="radio" value="1" name="BestSeller">
+                        <span>Có BestSeller</span>
+                    </div>
+                  
+                </div>
+            </div>
+        </form>
+        <button onclick="Add();">Xác Nhận Sản Phẩm</button>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $("#btnSelectImage").on('click', function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+        $("#btnSelectImage2").on('click', function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage2').val(url);
+            };
+            finder.popup();
+        })
+    })
+
+    function Add() {
+        let data = $('#danhsachsanpham-form').serialize();
+        console.log(data);
+        $.ajax({
+            url: '/Admin/DashBoard/Add',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+        })
+            .done(function (res) {
+                if (res.StatusCode == 200) {
+                    toastr.success('Thêm mới thành công!', 'Success !!!');
+                    Refresh('#table-engine');
+                }
+                else {
+                    toastr.error(res.Message, 'Error !!!');
+                }
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+            });
+    }
+</script>
+
+
