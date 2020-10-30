@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="description">Description</label>
-                            <textarea class="form-control validate" rows="3" required=""></textarea>
+                            <textarea name="Description" class="form-control validate" rows="3" required=""></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label for="Images">Hình ảnh</label>
@@ -85,10 +85,10 @@
                         <div class="form-group mb-3">
                             <label for="category">Category:</label>
                             @*<select class="custom-select tm-select-accounts" id="category">
-                                    <option value="0" selected="" name="Category" checked>Điện thoại</option>
-                                    <option value="1" name="Category">Âm thanh</option>
-                                    <option value="2" name="Category">Smart Watch</option>
-                                </select>*@
+                                <option value="0" selected="" name="Category" checked>Điện thoại</option>
+                                <option value="1" name="Category">Âm thanh</option>
+                                <option value="2" name="Category">Smart Watch</option>
+                            </select>*@
                             <input type="radio" id="radio0" value="0" name="Category" checked>
                             <span>Điện thoại </span>
                             <input type="radio" id="radio1" value="1" name="Category">
@@ -104,39 +104,44 @@
                             <span>Có BestSeller</span>
                         </div>
                         @*<div class="row">
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="expire_date">
-                                        Expire Date
-                                    </label>
-                                    <input id="expire_date" name="expire_date" type="text" class="form-control validate hasDatepicker" data-large-mode="true">
-                                </div>
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="stock">
-                                        Units In Stock
-                                    </label>
-                                    <input id="stock" name="stock" type="text" class="form-control validate" required="">
-                                </div>
-                            </div>*@
+                            <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                <label for="expire_date">
+                                    Expire Date
+                                </label>
+                                <input id="expire_date" name="expire_date" type="text" class="form-control validate hasDatepicker" data-large-mode="true">
+                            </div>
+                            <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                <label for="stock">
+                                    Units In Stock
+                                </label>
+                                <input id="stock" name="stock" type="text" class="form-control validate" required="">
+                            </div>
+                        </div>*@
 
                     </form>
                 </div>
                 <!--<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">-->
                 @*<div class="tm-product-img-dummy mx-auto">
-                        <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput').click();"></i>
-                    </div>*@
+                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput').click();"></i>
+                </div>*@
                 <!--<div class="custom-file mt-3 mb-3">
-                        <input id="fileInput" type="file" style="display:none;">
-                        <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
-                    </div>
-                </div>-->
+                    <input id="fileInput" type="file" style="display:none;">
+                    <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
+                </div>
+            </div>-->
                 <div class="col-12">
                     <button class="btn btn-primary btn-block text-uppercase" onclick="Add();">Add Product Now</button>
                 </div>
-
             </div>
+        </div>
+        <div id="table-engine" class="card-body table-responsive p-0">
+            @{Html.RenderAction("Pagging", "DashBoard");}
         </div>
     </div>
 </section>
+
+<script src="~/Content/sweetalert2/sweetalert2.all.js"></script>
+
 <script>
     $(document).ready(function () {
         $("#btnSelectImage").on('click', function () {
@@ -154,6 +159,24 @@
             finder.popup();
         })
     })
+
+    function Refresh(destination, pageIndex) {
+        $.ajax({
+            url: '/Admin/DashBoard/Pagging',
+            type: 'GET',
+            dataType: 'html',
+            data: { pageIndex: pageIndex },
+        })
+            .done(function (res) {
+                $(destination).html(res);
+            })
+            .fail(function () {
+
+            })
+            .always(function () {
+
+            });
+    }
 
     function Add() {
         let data = $('#danhsachsanpham-form').serialize();
@@ -179,6 +202,34 @@
             .always(function () {
                 console.log("complete");
             });
+    }
+        function Delete(ID) {
+        Swal.fire({
+            title: 'Bạn có chắc chắn xóa không?',
+            text: "Bạn sẽ không thể khôi phục lại được!",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!!!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete")',
+                    data: { ID: ID },
+                    dataType: "json",
+                    success: function () {
+                        Refresh('#table-engine');
+                        //setTimeout(function () {
+                        //    location.href("/Admin/danhsachsanpham/Index").reload();
+                        //}, 1000);
+                    },
+                    error: function () {
+                        alert("Error while deleting data");
+                    }
+                });
+            }
+        })
     }
 </script>
 

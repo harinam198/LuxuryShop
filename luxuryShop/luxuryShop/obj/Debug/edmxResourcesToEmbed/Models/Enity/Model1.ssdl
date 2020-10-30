@@ -10,6 +10,7 @@
     <Property Name="Price" Type="int" />
     <Property Name="Category" Type="int" />
     <Property Name="BestSeller" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descripton" Type="nvarchar(max)" />
   </EntityType>
   <EntityContainer Name="luxuryModelStoreContainer">
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />

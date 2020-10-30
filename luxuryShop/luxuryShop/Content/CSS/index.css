@@ -447,6 +447,8 @@ footer .footer-content {
 .footer-section h4 {
     text-transform: uppercase;
     letter-spacing: 4px;
+    color: white;
+    font-size: 25px;
 }
 
 .footer-section a {

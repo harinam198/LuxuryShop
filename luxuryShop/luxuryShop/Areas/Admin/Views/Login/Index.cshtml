@@ -3,6 +3,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    #icon-click {
+        position: absolute;
+        right: 85px;
+        transform: translate(0, -58%);
+        top: 58%;
+        cursor: pointer;
+    }
+
+    #eye {
+        font-size: 17px;
+        color: #7a797e;
+    }
+
+</style>
 <div class="container-fluid bg">
     <div class="row">
         <!-- <div class="col-md-4"></div> -->
@@ -43,6 +58,20 @@
             $("#signin").click();
         }
     });
+
+    $('#icon-click').click(function () {
+        // $('#eye').css("color", "#5887ef");
+        var input = $('#Pass');
+        if (input.attr("type") === "password") {
+            input.attr("type", "text");
+            $('#eye').toggleClass('fa-eye-slash');
+        } else {
+            input.attr("type", "password");
+            // $('#eye').css("color", "#7a797e");
+            $('#eye').toggleClass('fas fa-eye');
+        }
+    })
+
     $('#signin').click(function () {
         let email = $('#Name').val();
         let password = $('#Pass').val();

@@ -206,18 +206,6 @@ strong {
     font-weight: 700;
 }
 
-#icon-click {
-    position: absolute;
-    right: 85px;
-    transform: translate(0, -58%);
-    top: 60%;
-    cursor: pointer;
-}
-
-#eye {
-    font-size: 17px;
-    color: #7a797e;
-}
 
 
 /* #text {

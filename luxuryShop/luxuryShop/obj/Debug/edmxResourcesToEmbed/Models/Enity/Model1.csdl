@@ -10,6 +10,7 @@
     <Property Name="Price" Type="Int32" />
     <Property Name="Category" Type="Int32" />
     <Property Name="BestSeller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="luxuryEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Products" EntityType="Self.Product" />

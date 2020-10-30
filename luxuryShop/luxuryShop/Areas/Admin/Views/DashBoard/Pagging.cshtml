@@ -1,0 +1,122 @@
+﻿@using luxuryShop.Models.Enity
+@model luxuryShop.Views.ViewModels.SanphamViewModels
+@{
+    int previous = Model.pageIndex - 1;
+    int next = Model.pageIndex + 1;
+}
+<style>
+    .table {
+        text-align: center;
+        margin-top: 15px;
+        border-radius: 10px;
+    }
+
+        .table th {
+            background: black;
+            color: orange;
+        }
+
+    #table-engine, #table-engine1 {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #Img {
+        border: none;
+    }
+
+    .pagination {
+        width: 170px;
+        margin: 10px auto;
+    }
+
+        .pagination li {
+            margin: 0 3px;
+        }
+
+    .page-link-active {
+        background-color: orange;
+        color: white;
+        border: 2px solid orange;
+    }
+
+    .pagination a {
+        color: black;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 100%;
+        border: 2px solid black;
+        transition: .3s all;
+    }
+
+        .pagination a:hover {
+            background-color: orange;
+            border: 2px solid black;
+        }
+
+    .page-item:last-child .page-link {
+        border-top-right-radius: 100%;
+        border-bottom-right-radius: 100%;
+    }
+
+    .page-item:first-child .page-link {
+        border-top-left-radius: 100%;
+        border-bottom-left-radius: 100%;
+    }
+</style>
+<table class="table table-hover text-nowrap">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Hình ảnh sản phẩm</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in Model.sanphams as List<Product>)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Img</td>
+                <td class="action-picker">
+                    <i class="fa fa-eye" style="margin-left: 10px; cursor:pointer;" onclick="return location.href = '/Admin/DashBoard/Detail/@item.ID'"></i>
+                    <i class="fa fa-pencil-alt" style="margin-left: 10px; cursor:pointer;" onclick="return location.href = '/Admin/DashBoard/Edit/@item.ID'"></i>
+                    <i class="fa fa-trash" style="margin-left: 10px; cursor:pointer;" onclick="return Delete(@item.ID)"></i>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (Model.pageIndex == 1)
+        {
+            <li class="page-item"><a class="page-link" style="opacity: 0.5;"><i class="fas fa-angle-left"></i></a></li>
+}
+        @if (Model.pageIndex > 1)
+        {
+            <li class="page-item"><a class="page-link" onclick="Refresh('#table-engine',@previous)"><i class="fas fa-angle-left"></i></a></li>
+}
+        @for (int i = 1; i <= Model.TotalPage; i++)
+        {
+            if (i == Model.pageIndex)
+            {
+                <li class="page-item"><a class="page-link-active page-link" onclick="Refresh('#table-engine',@i)">@i</a></li>
+ }
+            else
+            {
+                <li class="page-item"><a class="page-link" onclick="Refresh('#table-engine',@i)">@i</a></li>
+}
+        }
+        @if (Model.pageIndex < Model.TotalPage)
+        {
+            <li id="next" class="page-item"><a class="page-link" onclick="Refresh('#table-engine',@next)"><i class="fas fa-angle-right"></i></a></li>
+}
+        @if (Model.pageIndex == Model.TotalPage)
+        {
+            <li id="next" class="page-item"><a class="page-link" style="opacity: 0.5;"><i class="fas fa-angle-right"></i></a></li>
+}
+    </ul>
+</nav>

@@ -10,6 +10,7 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="BestSeller" ColumnName="BestSeller" />
+          <ScalarProperty Name="Descripton" ColumnName="Descripton" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

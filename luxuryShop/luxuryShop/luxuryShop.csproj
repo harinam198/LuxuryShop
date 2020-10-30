@@ -161,6 +161,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ViewModels\Category.cs" />
     <Compile Include="Views\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\ViewModels\SanphamViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\css\all.css" />
@@ -951,6 +952,17 @@
     <Content Include="Content\IMAGES\user_icon.jpg" />
     <Content Include="Content\IMAGES\valid.png" />
     <Content Include="Content\IMAGES\Xiaomi-Amazfit-GTS.jpg" />
+    <Content Include="Content\JS\buy.js" />
+    <Content Include="Content\JS\form.js" />
+    <Content Include="Content\JS\index.js" />
+    <Content Include="Content\JS\login.js" />
+    <Content Include="Content\JS\registration.js" />
+    <Content Include="Content\sweetalert2\sweetalert2.all.js" />
+    <Content Include="Content\sweetalert2\sweetalert2.all.min.js" />
+    <Content Include="Content\sweetalert2\sweetalert2.css" />
+    <Content Include="Content\sweetalert2\sweetalert2.js" />
+    <Content Include="Content\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\sweetalert2\sweetalert2.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -976,13 +988,6 @@
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
-    <EntityDeploy Include="Models\Enity\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Enity\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\Admin\webfonts\fa-brands-400.eot" />
     <Content Include="Assets\Admin\webfonts\fa-brands-400.ttf" />
     <Content Include="Assets\Admin\webfonts\fa-brands-400.woff" />
@@ -995,6 +1000,16 @@
     <Content Include="Assets\Admin\webfonts\fa-solid-900.ttf" />
     <Content Include="Assets\Admin\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\Admin\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\DashBoard\Pagging.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Edit.cshtml" />
+    <EntityDeploy Include="Models\Enity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Enity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1024,6 +1039,7 @@
     <Content Include="Views\Home\DienThoai.cshtml" />
     <Content Include="Views\Home\Tainghe.cshtml" />
     <Content Include="Views\Home\DongHo.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

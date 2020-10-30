@@ -14,6 +14,10 @@ namespace luxuryShop.Controllers
 
         public ActionResult Index()
         {
+            var Product = new Category();
+            ViewBag.Dienthoai = Product.Dienthoai();
+            ViewBag.Tainghe = Product.Tainghe();
+            ViewBag.Dongho = Product.Dongho();
             return View();
         }
         public ActionResult DienThoai()
@@ -35,5 +39,14 @@ namespace luxuryShop.Controllers
             return View();
         }
 
+        public ActionResult Detail(int ID)
+        {
+            Product sanpham1 = db.Products.Find(ID);
+            if (sanpham1 == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sanpham1);
+        }
     }
 }

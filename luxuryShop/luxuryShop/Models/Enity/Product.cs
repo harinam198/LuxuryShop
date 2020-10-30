@@ -20,5 +20,6 @@ namespace luxuryShop.Models.Enity
         public Nullable<int> Price { get; set; }
         public Nullable<int> Category { get; set; }
         public string BestSeller { get; set; }
+        public string Descripton { get; set; }
     }
 }
