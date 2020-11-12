@@ -8,6 +8,11 @@
     #edit-form{
         margin: 25px auto;
     }
+    input[type=checkbox], input[type=radio] {
+        box-sizing: border-box;
+        padding: 0;
+        margin-left: 50px;
+    }
 </style>
 <h2>Edit</h2>
 <div class="container" id="edit-form">
@@ -48,10 +53,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Descripton, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripton, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripton, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @row = "3" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -63,11 +68,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.BestSeller, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BestSeller, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BestSeller, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BestSeller, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.BestSeller, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BestSeller, "Có")
+                @Html.RadioButtonFor(model => model.BestSeller, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BestSeller, "Không")
             </div>
         </div>
 

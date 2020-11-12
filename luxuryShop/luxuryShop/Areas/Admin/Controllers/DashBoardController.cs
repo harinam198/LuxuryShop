@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace luxuryShop.Areas.Admin.Controllers
@@ -19,7 +18,7 @@ namespace luxuryShop.Areas.Admin.Controllers
             return View();
         }
 
-        public PartialViewResult Pagging(int pageIndex = 1, int pageSize = 2)
+        public PartialViewResult Pagging(int pageIndex = 1, int pageSize = 5)
         {
             SanphamViewModels model = new SanphamViewModels();
             int upper = (pageIndex - 1) * pageSize;

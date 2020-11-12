@@ -37,6 +37,10 @@
     div#carouselExampleControls {
         margin-top: 75px !important;
     }
+    .box-img-hover img {
+        height: 200px !important;
+        object-fit: contain;
+    }
 </style>
 <section>
     <!-- Site Icons -->
@@ -254,11 +258,11 @@
     </div>
 </section>
 
-<!-- ALL JS FILES -->
+ ALL JS FILES 
 <script src="~/Assets/Admin/js/jquery-3.2.1.min.js"></script>
 <script src="~/Assets/Admin/js/popper.min.js"></script>
 <script src="~/Assets/Admin/js/bootstrap.min.js"></script>
-<!-- ALL PLUGINS -->
+ ALL PLUGINS 
 <script src="~/Assets/Admin/js/jquery.superslides.min.js"></script>
 <script src="~/Assets/Admin/js/bootstrap-select.js"></script>
 <script src="~/Assets/Admin/js/inewsticker.js"></script>
@@ -272,3 +276,19 @@
 <script src="~/Assets/Admin/js/form-validator.min.js"></script>
 <script src="~/Assets/Admin/js/contact-form-script.js"></script>
 <script src="~/Assets/Admin/js/custom.js"></script>
+
+<script>
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 50000000,
+            values: [1000000, 10000000],
+            slide: function (event, ui) {
+                $("#amount").val(ui.values[0] + "đ - " +  ui.values[1] + "đ");
+            }
+        });
+        $("#amount").val($("#slider-range").slider("values", 0)+"đ - " +
+             $("#slider-range").slider("values", 1)+"đ");
+    });
+</script>

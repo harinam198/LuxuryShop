@@ -22,18 +22,51 @@
     @*@Styles.Render("~/Content/CSS/layoutshare.css")*@
     @*@Scripts.Render("~/bundles/modernizr")*@
     <link href="~/Content/CSS/layoutshare.css" rel="stylesheet" />
+
+
+    <!-- Site Icons -->
+    <!--<link rel="shortcut icon" href="~/Assets/Admin/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Assets/Admin/images/apple-touch-icon.png">-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/custom.css">
     @*<style>
-        .fa-shopping-cart {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 35px;
-            background-color: #4dd0e1;
-            z-index: 1000;
-            border-radius: 50%;
-            padding: 10px;
+            .fa-shopping-cart {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                font-size: 35px;
+                background-color: #4dd0e1;
+                z-index: 1000;
+                border-radius: 50%;
+                padding: 10px;
+            }
+        </style>*@
+    <style>
+        .side {
+            z-index: 10000;
         }
-    </style>*@
+
+        .badge {
+            position: absolute;
+            margin-left: -3px;
+            border-radius: 50%;
+            background-color: white;
+            color: gray;
+        }
+        .float-right {
+            float: right !important;
+            margin-top: 5px;
+        }
+        li.total {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -119,11 +152,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Khuyến mãi</a>
                     </li>
-                    @*<li>
-                            <span>
-                                <i class="far fa-shopping-cart"></i>
-                            </span>
-                        </li>*@
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Đăng nhập
@@ -138,19 +167,29 @@
                             <!-- <a class="dropdown-item" href="javascripts:void(0);" data-toggle="modal" data-target="#modallogout">Log out</a> -->
                         </div>
                     </li>
+                    <li class="side-menu" onclick="show_Cart()">
+                        <div class="nav-link">
+                            <i class="fas fa-cart-plus" ></i>
+                            <span class="badge" id="count">3</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    @*<div>
-        <span class="cart" id="cart-store">
-            <i class="far fa-shopping-cart"></i>
-        </span>
-        <span class="popuptext" , id="Cart-opup">
-
-        </span>
-    </div>*@
-
+    <div class="side" id="cart-custom">
+        <a href="#" class="close-side">
+            <i class="fa fa-times" onclick="closeCart()"></i>
+        </a>
+        <li class="cart-box">
+            <ul class="cart-list" id="cart-item">
+            </ul>
+        </li>
+        <li class="total">
+            <a class="btn btn-default hvr-hover btn-cart" href="@Url.Action("Pay","Home")">Pay</a>
+            <strong>Total:</strong><strong class="float-right" id="totalCost"></strong>
+        </li>
+    </div>
 
     @RenderBody()
 
@@ -226,8 +265,235 @@
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
 
+    <!-- ALL JS FILES -->
+    @*<script src="~/Assets/Admin/js/jquery-3.2.1.min.js"></script>
+        <script src="~/Assets/Admin/js/popper.min.js"></script>
+        <script src="~/Assets/Admin/js/bootstrap.min.js"></script>*@
+    <!-- ALL PLUGINS -->
+    <!--<script src="~/Assets/Admin/js/jquery.superslides.min.js"></script>
+    <script src="~/Assets/Admin/js/bootstrap-select.js"></script>
+    <script src="~/Assets/Admin/js/inewsticker.js"></script>
+    <script src="~/Assets/Admin/js/bootsnav.js."></script>
+    <script src="~/Assets/Admin/js/images-loded.min.js"></script>
+    <script src="~/Assets/Admin/js/isotope.min.js"></script>
+    <script src="~/Assets/Admin/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Admin/js/baguetteBox.min.js"></script>
+    <script src="~/Assets/Admin/js/jquery-ui.js"></script>
+    <script src="~/Assets/Admin/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Assets/Admin/js/form-validator.min.js"></script>
+    <script src="~/Assets/Admin/js/contact-form-script.js"></script>
+    <script src="~/Assets/Admin/js/custom.js"></script>-->
+
+    <script>
+        //$(document).ready(function () {
+        //    $(".side-menu").click(function () {
+        //        $(".side").addClass("on");
+        //        showCart();
+        //    });
+        //    $(".close-side").click(function () {
+        //        $(".side").removeClass("on");
+        //    });
+        //});
+
+        function show_Cart() {
+            document.getElementById("cart-custom").style.right = "0px";
+            showCart();
+        }
+        function closeCart() {
+            document.getElementById("cart-custom").style.right = "-280px";
+        }
+    </script>
+    <script>
+        //giỏ hàng
+        var giohang = [];
+        var sosp = 0;
+        var tongtien = 0;
+        //lấy item trong localstorage
+        if (window.localStorage) {
+            giohang = JSON.parse(window.localStorage.getItem("giohang"));
+        }
+        if (!giohang) {
+            giohang = [];
+        }
+        if (giohang.length > 0) {
+            for (i in giohang) {
+                sosp += giohang[i].soluong;
+                tongtien += giohang[i].soluong * giohang[i].gia;
+            }
+        }
+        //add sản phẩm ào giỏ hàng
+        function AddToCart(id, img, name, price) {
+            for (i in giohang) {
+                var exist = false;
+                if (giohang[i].ma == id) {
+                    giohang[i].soluong++;
+                    sosp++;
+                    tongtien += giohang[i].gia;
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                var sanpham = { ma: id, img: img, ten: name, gia: price, soluong: 1 };
+                giohang.push(sanpham);
+                sosp++;
+                tongtien += sanpham.gia;
+            }
+            window.localStorage.setItem("giohang", JSON.stringify(giohang));
+            toastr.success('Thêm vào giỏ hàng thành công', 'SUCCESS!!!');
+            $('#count').text(sosp);
+            $('#count2').text(sosp);
+        }
+        //ready
+        $(document).ready(function () {
+            $('#count').text(sosp);
+            if (giohang.length == 0) {
+                var cartNull = `<li class="none-product">
+                                        <h4> Chưa có sản phẩm nào</h4>
+                                    </li>`;
+                $('#cart-item').html(cartNull);
+            }
+            showCart();
+        })
+        //hiển thị giỏ hàng
+        function showCart() {
+            var listShowCart = "";
+            for (i in giohang) {
+                listShowCart += `
+                        <li class="li-itemCart" data-id='${giohang[i].ma}'>
+                            <a href="#" class="photo"><img src="${giohang[i].img}" class="cart-thumb" alt=""></a>
+                            <h6><a href="#">${giohang[i].ten}</a></h6>
+                            <p>${giohang[i].soluong} - <span class="price">${giohang[i].gia}</span></p>
+                            <div class="cart-close" data-id='${giohang[i].ma}' data-qty='${giohang[i].soluong}' data-price='${giohang[i].gia}'>
+                                <i class="far fa-times-circle" id="cart-close"></i>
+                            </div>
+                        </li>`;
+
+                var payCart = "";
+                for (i in giohang) {
+                    payCart += `<tr>
+                                <td class="thumbnail-img">
+                                    <a href="#">
+                                        <img class="img-fluid" src="${giohang[i].img}" alt="">
+                                    </a>
+                                </td>
+                                <td class="name-pr">
+                                    <a href="#">
+                                        ${giohang[i].ten}
+                                    </a>
+                                </td>
+                                <td class="price-pr">
+                                    <p>${giohang[i].gia}đ</p>
+                                </td>
+                                <td class="quantity-box"><input type="number" size="4" value="${giohang[i].soluong}" min="0" step="1" class="c-input-text qty text"></td>
+                                <td class="total-pr">
+                                    <p>${giohang[i].gia * giohang[i].soluong}đ</p>
+                                </td>
+                                <td class="remove-pr">
+                                    <a href="#">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>`;
+                }
+            }
+            $("#cart-item").html(listShowCart);
+            $("#totalCost").html(tongtien + ' đ');
+            $("#order-form-2-product").html(payCart);
+            $("#totalCost-Pay").html(tongtien + ' đ');
+            //$("#totalCost-Pay-2").html(tongtien + 30000 + ' VNĐ');
+        }
+        //xóa sản phẩm trong giỏ hàng
+        removeCart();
+        function removeCart() {
+            $(document).on('click', '.cart-close', function () {
+                let id = $(this).attr('data-id');
+                let qty = $(this).attr('data-qty');
+                let price = $(this).attr('data-price');
+                tongtien -= price * qty;
+                sosp -= qty;
+                $("#totalCost").html(tongtien + ' đ');
+                $('#count').text(sosp);
+                giohang = giohang.filter(x => x.ma != id);
+                window.localStorage.setItem("giohang", JSON.stringify(giohang));
+                $('.li-itemCart[data-id="' + id + '"]').remove();
+                toastr.success('Bạn đã xóa sản phẩm trong giỏ hàng', 'SUCCESS!!!');
+            })
+        }
+        //xóa tất cả sản phẩm trong giỏ hàng
+        //function clearCart() {
+        //    $('#count').text(0);
+        //    $('#totalCost').text(0);
+        //    //$('#cart-item').html('');
+        //    var cartNull = `<li class="none-product">
+        //                            <h4> Chưa có sản phẩm nào</h4>
+        //                        </li>`;
+        //    $('#cart-item').html(cartNull);
+        //    localStorage.clear();
+        //    //toastr.success('Bạn đã xóa tất cả sản phẩm trong giỏ hàng', 'SUCCESS!!!');
+        //}
+
+        //đặt hàng
+        jQuery.fn.serializeObject = function () {
+            var formData = {};
+            var formArray = this.serializeArray();
+            for (var i = 0, n = formArray.length; i < n; ++i)
+                formData[formArray[i].name] = formArray[i].value;
+            return formData;
+        };
+
+        function checkValue() {
+            var ShipName = document.getElementById("ShipName").value;
+            var ShipMobile = document.getElementById("ShipMobile").value;
+            var ShipEmail = document.getElementById("ShipEmail").value;
+            var ShipAddress = document.getElementById("ShipAddress").value;
+            if (ShipName == "" || ShipMobile == "" || ShipEmail == "" || ShipAddress == "") {
+                toastr.error('Bạn chưa nhập đủ thông tin đơn hàng', 'ERROR!!!');
+            }
+            else {
+                //biểu tượng load
+                var spinner = document.getElementById("spin");
+                spinner.style.display = "block";
+
+                var dsDonHang = [];
+                for (i in giohang) {
+                    var totalPrice = giohang[i].soluong * giohang[i].gia;
+                    var ctdh = { OrderID: 0, Name: giohang[i].ten, Quantity: giohang[i].soluong, Price: giohang[i].gia, TotalPrice: totalPrice, SanphamID: giohang[i].ma };
+                    dsDonHang.push(ctdh);
+                }
+                var data = JSON.stringify(dsDonHang);
+                let data2 = $('#order-form').serializeObject();
+                $.ajax({
+                    url: '/Home/AddOrder',
+                    data: { arr: dsDonHang, data2: data2 },
+                    method: 'Post',
+                    success: function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Đặt hàng thành công',
+                            html: '<a href="/home/index"><b>MUA SẮM TIẾP</b></a> ',
+                            text: 'Cảm ơn bạn đã luôn tin tưởng và ủng hộ SWE!',
+                            footer: '<a href>Phản hồi vào số điện thoại : 0345500073</a>',
+                        })
+                        clearCart();
+                    }
+                });
+            }
+        }
 
 
+        $('#opencart').click(function () {
+            $('#cart').css("left", "0%");
+            showCart();
+        })
+        //đóng men
+        function cart_null() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Giỏ hàng của bạn chưa có sản phẩm',
+            })
+        }
+    </script>
 </body>
 
 </html>

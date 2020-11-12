@@ -15,39 +15,6 @@
 </style>
 <script src="~/Content/ckfinder/ckfinder.js"></script>
 <section>
-    <!--<div class="admin">
-        <form id="danhsachsanpham-form" action="/" method="post">
-            <div class="wrap">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>Sản Phẩm</h3>
-                        <p>Tên Sản Phẩm</p>
-                        <input type="text" name="Name" placeholder="Tên sản phẩm">
-                        <p>Giá sản phẩm</p>
-                        <input type="text" name="Price" placeholder="Giá sản phẩm">
-                        <p>Ảnh sản phẩm</p>
-                        <input type="text" id="txtImage" name="Img">
-                        <p id="btnSelectImage">Chọn ảnh</p>
-                        <p>Ảnh sản phẩm</p>-->
-    @*category*@
-    <!--<h3>Nhóm Sản Phẩm</h3>
-                        <input type="radio" id="radio" value="0" name="Category" checked>
-                        <span>Điện thoại </span>
-                        <input type="radio" id="radio" value="1" name="Category">
-                        <span>Tai nghe</span>
-                        <input type="radio" id="radio" value="2" name="Category">
-                        <span>Đồng hồ</span>
-                        <input type="radio" id="radio" value="NULL" name="BestSeller" checked>
-                        <span>Không BestSeller</span>
-                        <input type="radio" id="radio" value="1" name="BestSeller">
-                        <span>Có BestSeller</span>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-        <button onclick="Add();">Xác Nhận Sản Phẩm</button>
-    </div>-->
     <div class="container">
         <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
@@ -72,23 +39,17 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="description">Description</label>
-                            <textarea name="Description" class="form-control validate" rows="3" required=""></textarea>
+                            <textarea id="description" name="Description" class="form-control validate" rows="3" required=""></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label for="Images">Hình ảnh</label>
                             <input id="txtImage" name="Img" type="text" class="form-control validate" required="">
                         </div>
                         <div class="form-group-file mt-3 mb-3">
-                            @*<input id="fileInput" type="file" style="display:none;">*@
                             <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
                         </div>
                         <div class="form-group mb-3">
                             <label for="category">Category:</label>
-                            @*<select class="custom-select tm-select-accounts" id="category">
-                                <option value="0" selected="" name="Category" checked>Điện thoại</option>
-                                <option value="1" name="Category">Âm thanh</option>
-                                <option value="2" name="Category">Smart Watch</option>
-                            </select>*@
                             <input type="radio" id="radio0" value="0" name="Category" checked>
                             <span>Điện thoại </span>
                             <input type="radio" id="radio1" value="1" name="Category">
@@ -103,32 +64,8 @@
                             <input type="radio" id="radio4" value="1" name="BestSeller">
                             <span>Có BestSeller</span>
                         </div>
-                        @*<div class="row">
-                            <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                <label for="expire_date">
-                                    Expire Date
-                                </label>
-                                <input id="expire_date" name="expire_date" type="text" class="form-control validate hasDatepicker" data-large-mode="true">
-                            </div>
-                            <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                <label for="stock">
-                                    Units In Stock
-                                </label>
-                                <input id="stock" name="stock" type="text" class="form-control validate" required="">
-                            </div>
-                        </div>*@
-
                     </form>
                 </div>
-                <!--<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">-->
-                @*<div class="tm-product-img-dummy mx-auto">
-                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput').click();"></i>
-                </div>*@
-                <!--<div class="custom-file mt-3 mb-3">
-                    <input id="fileInput" type="file" style="display:none;">
-                    <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
-                </div>
-            </div>-->
                 <div class="col-12">
                     <button class="btn btn-primary btn-block text-uppercase" onclick="Add();">Add Product Now</button>
                 </div>

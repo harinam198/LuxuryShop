@@ -366,7 +366,7 @@ body.on-side{
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-    z-index: 9;
+    z-index: 10000;
 }
 
 .side.on{

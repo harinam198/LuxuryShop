@@ -48,5 +48,9 @@ namespace luxuryShop.Controllers
             }
             return View(sanpham1);
         }
+        public ActionResult Pay()
+        {
+            return View();
+        }
     }
 }
