@@ -169,7 +169,7 @@
                     </li>
                     <li class="side-menu" onclick="show_Cart()">
                         <div class="nav-link">
-                            <i class="fas fa-cart-plus" ></i>
+                            <i class="fas fa-cart-plus"></i>
                             <span class="badge" id="count">3</span>
                         </div>
                     </li>
@@ -283,7 +283,7 @@
     <script src="~/Assets/Admin/js/form-validator.min.js"></script>
     <script src="~/Assets/Admin/js/contact-form-script.js"></script>
     <script src="~/Assets/Admin/js/custom.js"></script>-->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         //$(document).ready(function () {
         //    $(".side-menu").click(function () {
@@ -348,8 +348,8 @@
             $('#count').text(sosp);
             if (giohang.length == 0) {
                 var cartNull = `<li class="none-product">
-                                        <h4> Chưa có sản phẩm nào</h4>
-                                    </li>`;
+                                            <h4> Chưa có sản phẩm nào</h4>
+                                        </li>`;
                 $('#cart-item').html(cartNull);
             }
             showCart();
@@ -359,41 +359,41 @@
             var listShowCart = "";
             for (i in giohang) {
                 listShowCart += `
-                        <li class="li-itemCart" data-id='${giohang[i].ma}'>
-                            <a href="#" class="photo"><img src="${giohang[i].img}" class="cart-thumb" alt=""></a>
-                            <h6><a href="#">${giohang[i].ten}</a></h6>
-                            <p>${giohang[i].soluong} - <span class="price">${giohang[i].gia}</span></p>
-                            <div class="cart-close" data-id='${giohang[i].ma}' data-qty='${giohang[i].soluong}' data-price='${giohang[i].gia}'>
-                                <i class="far fa-times-circle" id="cart-close"></i>
-                            </div>
-                        </li>`;
+                            <li class="li-itemCart" data-id='${giohang[i].ma}'>
+                                <a href="#" class="photo"><img src="${giohang[i].img}" class="cart-thumb" alt=""></a>
+                                <h6><a href="#">${giohang[i].ten}</a></h6>
+                                <p>${giohang[i].soluong} - <span class="price">${giohang[i].gia}</span></p>
+                                <div class="cart-close" data-id='${giohang[i].ma}' data-qty='${giohang[i].soluong}' data-price='${giohang[i].gia}'>
+                                    <i class="far fa-times-circle" id="cart-close"></i>
+                                </div>
+                            </li>`;
 
                 var payCart = "";
                 for (i in giohang) {
                     payCart += `<tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="${giohang[i].img}" alt="">
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        ${giohang[i].ten}
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>${giohang[i].gia}đ</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="${giohang[i].soluong}" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>${giohang[i].gia * giohang[i].soluong}đ</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>`;
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+                                            <img class="img-fluid" src="${giohang[i].img}" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            ${giohang[i].ten}
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>${giohang[i].gia}đ</p>
+                                    </td>
+                                    <td class="quantity-box"><input type="number" size="4" value="${giohang[i].soluong}" min="0" step="1" class="c-input-text qty text"></td>
+                                    <td class="total-pr">
+                                        <p>${giohang[i].gia * giohang[i].soluong}đ</p>
+                                    </td>
+                                    <td class="remove-pr">
+                                        <a href="#">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>`;
                 }
             }
             $("#cart-item").html(listShowCart);
@@ -420,17 +420,17 @@
             })
         }
         //xóa tất cả sản phẩm trong giỏ hàng
-        //function clearCart() {
-        //    $('#count').text(0);
-        //    $('#totalCost').text(0);
-        //    //$('#cart-item').html('');
-        //    var cartNull = `<li class="none-product">
-        //                            <h4> Chưa có sản phẩm nào</h4>
-        //                        </li>`;
-        //    $('#cart-item').html(cartNull);
-        //    localStorage.clear();
-        //    //toastr.success('Bạn đã xóa tất cả sản phẩm trong giỏ hàng', 'SUCCESS!!!');
-        //}
+        function clearCart() {
+            $('#count').text(0);
+            $('#totalCost').text(0);
+            //$('#cart-item').html('');
+            var cartNull = `<li class="none-product">
+                                        <h4> Chưa có sản phẩm nào</h4>
+                                    </li>`;
+            $('#cart-item').html(cartNull);
+            localStorage.clear();
+            //toastr.success('Bạn đã xóa tất cả sản phẩm trong giỏ hàng', 'SUCCESS!!!');
+        }
 
         //đặt hàng
         jQuery.fn.serializeObject = function () {
@@ -451,13 +451,13 @@
             }
             else {
                 //biểu tượng load
-                var spinner = document.getElementById("spin");
-                spinner.style.display = "block";
+                //var spinner = document.getElementById("spin");
+                //spinner.style.display = "block";
 
                 var dsDonHang = [];
                 for (i in giohang) {
                     var totalPrice = giohang[i].soluong * giohang[i].gia;
-                    var ctdh = { OrderID: 0, Name: giohang[i].ten, Quantity: giohang[i].soluong, Price: giohang[i].gia, TotalPrice: totalPrice, SanphamID: giohang[i].ma };
+                    var ctdh = { OrderID: 0, Name: giohang[i].ten, Quantity: giohang[i].soluong, Price: giohang[i].gia, TotalPrice: totalPrice, ProductID: giohang[i].ma };
                     dsDonHang.push(ctdh);
                 }
                 var data = JSON.stringify(dsDonHang);

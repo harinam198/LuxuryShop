@@ -12,6 +12,12 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="~/Assets/Admin/css/custom.css">
 
+<style>
+    #button-pay{
+        margin-bottom:15px;
+    }
+</style>
+
 <div class="cart-box-main">
     <div class="container">
         <div class="row">
@@ -29,30 +35,6 @@
                             </tr>
                         </thead>
                         <tbody id="order-form-2-product">
-                            @*<tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-01.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>*@
                         </tbody>
                     </table>
                 </div>
@@ -60,4 +42,62 @@
         </div>
     </div>
 </div>
+@*<div class="row">
+        <div class="container">
+            <div class="col-12 col-lg-6">
+                <form id="order-form" action="/" method="post">
+                    <h3 style="margin-top: 30px;">THÔNG TIN THANH TOÁN</h3>
+                    <div class="order-input col-12">
+                        <p>Họ Và Tên *</p>
+                        <input type="text" id="ShipName" name="ShipName" placeholder="Nhập đầy đủ họ và tên">
+                    </div>
+                    <div class="order-input col-12">
+                        <p>Số điện thoại *</p>
+                        <input type="text" id="ShipMobile" name="ShipMobile" placeholder="Số điện thoại">
+                    </div>
+                    <div class="order-input col-12">
+                        <p>Email *</p>
+                        <input type="Email" id="ShipEmail" name="ShipEmail" placeholder="Email của bạn">
+                    </div>
+                    <div class="order-input col-12">
+                        <p>Địa Chỉ *</p>
+                        <input type="text" id="ShipAddress" name="ShipAddress" placeholder="Ví dụ: số nhà 44,ngõ 192 Kim Mã,Hà Nội">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
+<div class="container">
+    <form id="order-form" action="/" method="post">
+        <h3 style="margin-top: 30px; font-weight:600; font-size:25px">THÔNG TIN THANH TOÁN</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Name">Họ và tên</label>
+                <input type="text" class="form-control" id="ShipName" name="OrderName" placeholder="Họ và tên">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="PhoneNunmber">Số điện thoại</label>
+                <input type="text" class="form-control" id="ShipMobile" name="OrderMobile" placeholder="Số điện thoại">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="ShipEmail" name="OrderEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Địa chỉ</label>
+            <input type="text" class="form-control" id="ShipAddress" name="OrderAddress" placeholder="Địa chỉ cụ thể">
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary" id="button-pay" onclick="checkValue()">Thanh toán</button>
+</div>
+<script>
 
+    $(function () {
+        $('input[name="ShipName"]' && 'input[name="ShipMobile"]' && 'input[name="ShipEmail"]' && 'input[name="ShipAddress"]').change(function () {
+            if ($(this).val()) {
+                $("#button-pay").prop("type", "submit");
+            }
+        })
+    })
+</script>

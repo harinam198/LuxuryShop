@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace luxuryShop.Controllers
@@ -51,6 +52,50 @@ namespace luxuryShop.Controllers
         public ActionResult Pay()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddOrder(List<ProductDetail> arr, Cart data2)
+        {
+            int orderID;
+            data2.CreateDate = DateTime.Now;
+            db.Carts.Add(data2);
+            db.SaveChanges();
+            orderID = data2.OrderID;
+            foreach (ProductDetail item in arr)
+            {
+                item.OrderID = orderID;
+            }
+            db.ProductDetails.AddRange(arr.AsEnumerable());
+            db.SaveChanges();
+
+            //gửi email
+            int? total = 0;
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/client/template/email.html"));
+            foreach (var item in arr)
+            {
+                content = content.Replace("{{NameProduct}}", item.Name);
+                content = content.Replace("{{ID}}", item.OrderID.ToString());
+                content = content.Replace("{{Price}}", item.Price.ToString());
+                content = content.Replace("{{soluong}}", item.Quantity.ToString());
+                string.Format("{0:#,##0}", total += item.Quantity * item.Price);
+            }
+            string shipEmail = data2.OrderEmail;
+            string recipient = shipEmail;
+            content = content.Replace("{{CustomerName}}", data2.OrderName);
+            content = content.Replace("{{Phone}}", data2.OrderMobile);
+            content = content.Replace("{{Email}}", data2.OrderEmail);
+            content = content.Replace("{{Address}}", data2.OrderAddress);
+            content = content.Replace("{{Total}}", total.ToString());
+            content = content.Replace("{{CreateDate}}", data2.CreateDate.ToString());
+
+            WebMail.SmtpServer = "smtp.gmail.com";
+            WebMail.SmtpPort = 587;
+            WebMail.SmtpUseDefaultCredentials = true;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "truongviethieu98@gmail.com";
+            WebMail.Password = "truongviethieu";
+            WebMail.Send(to: recipient, subject: "Đơn Hàng Từ SWE", body: content);
+            return RedirectToAction("Index");
         }
     }
 }
