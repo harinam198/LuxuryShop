@@ -1024,6 +1024,7 @@
     <Content Include="Areas\Admin\Views\DashBoard\PaggingOrder.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\Donhang.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\DetailDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ViewDetail.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
