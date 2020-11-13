@@ -68,60 +68,11 @@
                         </div>
                     </li>
                     <li class="nav-item " id="list-dt">
-                        <a class="nav-link" href="listphone.html">Điện thoại <span class="sr-only">(current)</span></a>
-                        <ul id="list">
-                            <li class="nav-1-1 first parent">
-                                <a href="">Apple</a>
-                                <ul style="padding-left: 10px;padding-right: 5px;">
-                                    <li><a href="">iPhone 11 | 11 Pro | 11 ProMax</a></li>
-                                    <li>
-                                    <li><a href="">iPhone XS | XS Max</a></li>
-                                    <li>
-                                    <li><a href="">iPhone X | XR</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 8 | 8 Plus</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 7 | 7 Plus</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 6S | 6S Plus</a></li>
-                                    <li>
-                                </ul>
-                            </li>
-                            <li class="menu-dt" style="margin-left: 240px; margin-top: -238px"><a href="">SAMSUNG</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">SONY</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">OPPO</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">VSMART</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">XIAOMI</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">ASUS</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">HUWEI</a></li>
-                        </ul>
+                        <a class="nav-link" href="@Url.Action("Index","DashBoard")">Sản Phẩm<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Phụ kiện</a>
+                        <a class="nav-link" href="@Url.Action("Donhang","DashBoard")">Đơn Order</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tablet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Trả góp</a>
-                    </li>
-                    <li class="nav-item" id="dv">
-                        <a class="nav-link" href="#" id="sv">Dịch vụ</a>
-                        <ul id="service">
-                            <li><a href="#">Thay pin</a></li>
-                            <li><a href="#">Ép kính</a></li>
-                            <li><a href="#">Thay màn hình</a></li>
-                            <li><a href="#">Sửa chữa</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Khuyến mãi</a>
-                    </li>
-                    @*<li>
-                            <span>
-                                <i class="far fa-shopping-cart"></i>
-                            </span>
-                        </li>*@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Đăng nhập
@@ -132,7 +83,7 @@
                             <div class="dropdown-divider"></div> -->
                             <a class="dropdown-item" href="@Url.Action("Login","Admin")">Đăng nhập</a>
                             <!-- java không link đi đâu cả -->
-                            <a class="dropdown-item" href="register.html">Đăng ký</a>
+                            <a class="dropdown-item" href="#">Đăng xuất</a>
                             <!-- <a class="dropdown-item" href="javascripts:void(0);" data-toggle="modal" data-target="#modallogout">Log out</a> -->
                         </div>
                     </li>
@@ -140,19 +91,12 @@
             </div>
         </div>
     </nav>
-    <div>
-        <span class="cart" id="cart-store">
-            <i class="far fa-shopping-cart"></i>
-        </span>
-        <span class="popuptext" , id="Cart-opup">
 
-        </span>
-    </div>
 
 
     @RenderBody()
 
-    <footer>
+    <footer class="fixed-bottom">
         <div class="footer-content">
             <div class="footer-section about">
                 <div class="footer-mg">

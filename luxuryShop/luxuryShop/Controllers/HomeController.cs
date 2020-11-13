@@ -3,6 +3,7 @@ using luxuryShop.Views.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -92,10 +93,26 @@ namespace luxuryShop.Controllers
             WebMail.SmtpPort = 587;
             WebMail.SmtpUseDefaultCredentials = true;
             WebMail.EnableSsl = true;
-            WebMail.UserName = "truongviethieu98@gmail.com";
-            WebMail.Password = "truongviethieu";
-            WebMail.Send(to: recipient, subject: "Đơn Hàng Từ SWE", body: content);
+            WebMail.UserName = "lehainamx1@gmail.com";
+            WebMail.Password = "01238450198";
+            WebMail.Send(to: recipient, subject: "Đơn Hàng Từ LuxuryStore", body: content);
             return RedirectToAction("Index");
+        }
+        public ActionResult SearchItem(string productName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(productName))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                List<Product> searchItem = db.Products.Where(e => e.Name.Contains(productName)).ToList();
+                return View(searchItem);
+            }
+            catch
+            {
+                return RedirectToAction("ActionDenied", "Common");
+            }
         }
     }
 }

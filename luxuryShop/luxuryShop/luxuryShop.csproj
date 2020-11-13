@@ -169,6 +169,8 @@
     <Compile Include="Views\ViewModels\Category.cs" />
     <Compile Include="Views\ViewModels\giohang.cs" />
     <Compile Include="Views\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\ViewModels\OrderDetailsViewModel.cs" />
+    <Compile Include="Views\ViewModels\OrderViewModel.cs" />
     <Compile Include="Views\ViewModels\SanphamViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1019,6 +1021,9 @@
     <Content Include="Models\Enity\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\DashBoard\PaggingOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Donhang.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\DetailDonHang.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

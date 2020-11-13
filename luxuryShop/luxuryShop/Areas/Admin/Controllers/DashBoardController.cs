@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace luxuryShop.Areas.Admin.Controllers
@@ -101,6 +102,38 @@ namespace luxuryShop.Areas.Admin.Controllers
                 result = true;
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Donhang()
+        {
+            return View();
+        }
+
+        public PartialViewResult PaggingOrder(int pageIndex = 1, int pageSize = 20)
+        {
+            OrderViewModel model = new OrderViewModel();
+            int upper = (pageIndex - 1) * pageSize;
+            var emps = db.Carts.OrderBy(x => x.OrderID);
+            model.orders = emps.Skip(upper).Take(pageSize).ToList();
+            model.pageIndex = pageIndex;
+            model.pageSize = pageSize;
+            model.TotalRecord = emps.Count();
+            decimal totalPage = (decimal)model.TotalRecord / model.pageSize;
+            model.TotalPage = decimal.ToInt32(Math.Ceiling(totalPage));
+            return PartialView(model);
+        }
+        public ActionResult DetailDonHang(int? OrderID)
+        {
+            if (OrderID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<ProductDetail> orderDetail = db.ProductDetails.Where(e => e.OrderID == OrderID).ToList();
+            if (orderDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderDetail);
         }
     }
 }
