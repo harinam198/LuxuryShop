@@ -3,21 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    #icon-click {
-        position: absolute;
-        right: 85px;
-        transform: translate(0, -58%);
-        top: 59%;
-        cursor: pointer;
-    }
+<link href="~/Content/CSS/login.css" rel="stylesheet" />
 
-    #eye {
-        font-size: 17px;
-        color: #7a797e;
-    }
-
-</style>
 <div class="container-fluid bg">
     <div class="row">
         <!-- <div class="col-md-4"></div> -->
@@ -31,9 +18,9 @@
                 <div class="form-group">
                     <label for="myPasswordSignUp">Mật khẩu</label>
                     <input type="password" id="Pass" class="form-control" placeholder="Mật khẩu">
-                    <span id="icon-click">
+                    @*<span id="icon-click">
                         <i class="fas fa-eye" aria-hidden="true" id="eye"></i>
-                    </span>
+                    </span>*@
                 </div>
                 <div class="checkbox">
                     <label>
@@ -45,6 +32,7 @@
                 </div>
                 <div class="form-group">
                     <p style="text-align: center; margin-top: 5px;"><a href="#">Quên mật khẩu?</a></p>
+                    <br />
                     <p class="note" style="text-align:center">Bạn chưa có tài khoản? Đăng ký <a href="#register" data-toggle="modal">tại đây</a></p>
                 </div>
             </form>

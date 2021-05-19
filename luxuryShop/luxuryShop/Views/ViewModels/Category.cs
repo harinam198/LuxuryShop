@@ -13,9 +13,9 @@ namespace luxuryShop.Views.ViewModels
         {
             db = new luxuryEntities();
         }
-        public List<Product> Dienthoai()
+        public List<Product> Dienthoai(int top)
         {
-            return db.Products.Where(x => x.Category == 0).OrderByDescending(x => x.ID).ToList();
+            return db.Products.Where(x => x.Category == 0).Take(top).ToList();
         }
         public List<Product> Tainghe()
         {
@@ -24,6 +24,10 @@ namespace luxuryShop.Views.ViewModels
         public List<Product> Dongho()
         {
             return db.Products.Where(x => x.Category == 2).OrderByDescending(x => x.ID).ToList();
+        }
+        public List<Product> BestSeller()
+        {
+            return db.Products.Where(x => x.BestSeller != null).OrderByDescending(x => x.ID).ToList();
         }
     }
 }

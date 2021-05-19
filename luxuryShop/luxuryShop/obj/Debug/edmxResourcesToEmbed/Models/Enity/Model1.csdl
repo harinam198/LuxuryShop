@@ -1,27 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="luxuryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="OrderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OrderMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="OrderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="OrderEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OrderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="Category" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="Int32" Nullable="false" />
     <Property Name="BestSeller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sale" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductDetail">
     <Key>
@@ -35,9 +47,24 @@
     <Property Name="TotalPrice" Type="Int32" />
     <Property Name="ProductID" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="luxuryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Carts" EntityType="Self.Cart" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="ProductDetails" EntityType="Self.ProductDetail" />
+    <EntitySet Name="Users" EntityType="Self.User" />
   </EntityContainer>
 </Schema>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link href="~/Content/CSS/index.css" rel="stylesheet" />
-    <link href="~/Content/CSS/login.css" rel="stylesheet" />
+    @*<link href="~/Content/CSS/login.css" rel="stylesheet" />*@
     <link rel="shortcut icon" href="~/Content/IMAGES/luxurylogo.jpg">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -19,26 +19,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     @*@Styles.Render("~/Content/CSS/layoutshare.css")*@
     @*@Scripts.Render("~/bundles/modernizr")*@
-    <link href="~/Content/CSS/layoutshare.css" rel="stylesheet" />
-    <style>
-        .fa-shopping-cart {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 35px;
-            background-color: #4dd0e1;
-            z-index: 1000;
-            border-radius: 50%;
-            padding: 10px;
-        }
-    </style>
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="@Url.Action("Index","Home")">
+            <a class="navbar-brand" href="/Home/Index">
                 <img src="~/Content/IMAGES/luxurylogo.jpg" height="30" width="30">
-                <a class="navbar-brand" href="@Url.Action("Index","Home")">LUXURY STORE</a>
+                <a class="navbar-brand" href="/Home/Index">LUXURY STORE</a>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -73,19 +62,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Donhang","DashBoard")">Đơn Order</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Đăng nhập
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Account</a>
-                            <div class="dropdown-divider"></div> -->
-                            <a class="dropdown-item" href="@Url.Action("Login","Admin")">Đăng nhập</a>
-                            <!-- java không link đi đâu cả -->
-                            <a class="dropdown-item" href="#">Đăng xuất</a>
-                            <!-- <a class="dropdown-item" href="javascripts:void(0);" data-toggle="modal" data-target="#modallogout">Log out</a> -->
-                        </div>
+                    <li class="nav-item">
+                        @Html.ActionLink("Đăng xuất", "Logout", "Login", null, new { @class = "nav-link" })
                     </li>
                 </ul>
             </div>

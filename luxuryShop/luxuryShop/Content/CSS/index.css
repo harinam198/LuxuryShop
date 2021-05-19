@@ -21,52 +21,50 @@
 }
 
 
-/*.navbar-nav li {
+.navbar-nav li {
     float: left;
+}
+
+    .navbar-nav li.nav-1 li {
+        width: 140px;
+    }
+
+
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 40px;
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    background-color: #2e28284b;
+    border-radius: 30px;
+    padding: 0px;
+}
+
+.search_input {
+    color: rgb(255, 255, 255);
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+/*.searchbar:hover > .search_input {
+    padding: 0 10px;
+    width: 200px;
+    caret-color: white;
+    transition: width 0.4s linear;
 }*/
 
-.navbar-nav li.nav-1 li {
-    width: 140px;
-}
-
-
-/* .searchbar{
-margin-bottom: auto;
-margin-top: auto;
-height: 40px;
-border-bottom: 1px solid #4dd0e1;
-box-shadow: 0 1px 0 0 #4dd0e1;
-background-color: #2e28284b; 
-border-radius: 30px;
-padding: 0px;
-
-}
-
-.search_input{
-
-color: rgb(255, 255, 255);
-border: 0;
-outline: 0;
-background: none;
-width: 0;
-caret-color:transparent;
-line-height: 40px;
-transition: width 0.4s linear;
-}
-
-.searchbar:hover > .search_input{
-padding: 0 10px;
-width: 200px;
-caret-color:white;
-transition: width 0.4s linear;
-}
-
-.searchbar:hover > .search_icon{
-/* background: white; */
+/*.searchbar:hover > .search_icon{*/
+/* background: white; 
 
 .searchbar:hover>.search_icon {
     color: #ffffff;
-}
+}*/
 
 .searchbar {
     margin-bottom: auto;
@@ -135,24 +133,26 @@ transition: width 0.4s linear;
     padding: 5px;
 }
 
-#service a {
-    color: black;
-    padding: 5px;
-    text-decoration: none;
-    display: block;
-}
+    #service a {
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        display: block;
+    }
 
-#service a:hover {
-    color: red;
-    text-decoration: underline;
-}
+        #service a:hover {
+            color: red;
+            text-decoration: underline;
+        }
 
 #dv:hover #service {
     display: block;
 }
 
 
-/*#dv:hover .nav-link {background-color: gray;}*/
+#dv:hover .nav-link {
+    background-color: gray;
+}
 
 #list-dt {
     position: relative;
@@ -173,17 +173,17 @@ transition: width 0.4s linear;
     padding: 5px;
 }
 
-#list a {
-    color: black;
-    padding: 5px;
-    text-decoration: none;
-    display: block;
-}
+    #list a {
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        display: block;
+    }
 
-#list a:hover {
-    color: red;
-    text-decoration: underline;
-}
+        #list a:hover {
+            color: red;
+            text-decoration: underline;
+        }
 
 #list-dt:hover #list {
     display: block;
@@ -199,24 +199,24 @@ ul li {
 }
 
 
-/*#list li {
+#list li {
     float: left;
-}*/
+}
 
 
-/* .search_icon{
-height: 40px;
-width: 40px;
-float: right;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 50%;
-color:rgb(255, 255, 255);
-text-decoration:none;
-} */
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
 
-*/ div {
+/**/ div {
     display: block;
 }
 
@@ -249,7 +249,7 @@ text-decoration:none;
 
 .f-left,
 .left {
-    float: left!important;
+    float: left !important;
 }
 
 .lt-product-group .section-header h2 {
@@ -283,9 +283,9 @@ text-decoration:none;
     text-decoration: none;
 }
 
-.filter-panel a:hover {
-    text-decoration: none;
-}
+    .filter-panel a:hover {
+        text-decoration: none;
+    }
 
 
 /*.btn-default:hover{
@@ -328,6 +328,18 @@ ul.cols.cols-5 {
     clear: both;
 }
 
+.card round {
+    width: 255px !important;
+    height: 364.33px !important;
+}
+
+..card-img-top {
+    width: 253px;
+    height: 198.89px;
+}
+.card-body{
+    height:25vh !important;
+}
 h2 :hoever {
     color: red;
     text-decoration: underline;
@@ -363,16 +375,20 @@ a {
     .input-search {
         display: block;
     }
+
     .input-search-2 {
         display: none;
     }
+
     .contact,
     .social {
         display: none;
     }
+
     .about {
         text-align: center;
     }
+
     #next-page {
         width: 71%;
         margin: 0 auto;
@@ -387,9 +403,9 @@ a {
     font-size: 16px;
 }
 
-.card-title:hover {
-    color: red;
-}
+    .card-title:hover {
+        color: red;
+    }
 
 .card-img,
 .card-img-top,
@@ -407,7 +423,13 @@ a {
     min-height: 1px;
     padding: 1.25rem;
     object-fit: contain;
-    /* height: 25vh; */
+    height: 25vh!important;
+    width: 253px!important;
+
+}
+
+.card-text {
+    height: 15vh;
 }
 
 .card-body span {
@@ -432,11 +454,11 @@ footer {
     position: relative;
 }
 
-footer .footer-content {
-    height: 270px;
-    display: flex;
-    color: white;
-}
+    footer .footer-content {
+        height: 270px;
+        display: flex;
+        color: white;
+    }
 
 .footer-section {
     flex: 1;
@@ -444,22 +466,22 @@ footer .footer-content {
     border: 1px solid rgb(56, 55, 55);
 }
 
-.footer-section h4 {
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: white;
-    font-size: 25px;
-}
+    .footer-section h4 {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: white;
+        font-size: 25px;
+    }
 
-.footer-section a {
-    text-decoration: none;
-    color: white;
-}
+    .footer-section a {
+        text-decoration: none;
+        color: white;
+    }
 
-.footer-section a:hover {
-    color: rgb(247, 103, 103);
-    transition: 0.3s;
-}
+        .footer-section a:hover {
+            color: rgb(247, 103, 103);
+            transition: 0.3s;
+        }
 
 .footer-mg {
     width: 80%;
@@ -503,9 +525,9 @@ footer .footer-content {
     color: white;
 }
 
-.social .text-input:focus {
-    background: #7f7d7d;
-}
+    .social .text-input:focus {
+        background: #7f7d7d;
+    }
 
 .social a:hover {
     border: 1px solid rgb(247, 103, 103);
@@ -516,9 +538,9 @@ footer .footer-content {
     border-radius: 5px;
 }
 
-.social .btn-send:hover {
-    border: 2px solid rgb(247, 103, 103);
-}
+    .social .btn-send:hover {
+        border: 2px solid rgb(247, 103, 103);
+    }
 
 .fade {
     color: black;
@@ -532,9 +554,9 @@ footer .footer-content {
     outline: none;
 }
 
-#fback:hover {
-    background: rgb(247, 103, 103);
-}
+    #fback:hover {
+        background: rgb(247, 103, 103);
+    }
 
 footer .footer-bottom {
     position: absolute;

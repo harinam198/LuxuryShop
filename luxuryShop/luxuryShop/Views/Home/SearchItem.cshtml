@@ -1,0 +1,128 @@
+﻿@model List<luxuryShop.Models.Enity.Product>
+@using luxuryShop.Models.Enity
+@{
+    ViewBag.Title = "SearchItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        margin: 20px 0;
+    }
+
+    p.card-text {
+        height: 15vh;
+    }
+
+    .list {
+        padding: 20px 0;
+    }
+
+        .list a {
+            color: black;
+            text-decoration: underline;
+            transition: .3s all;
+        }
+
+            .list a:hover {
+                background: black;
+                color: white;
+            }
+
+        .list #back {
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+    div#carouselExampleControls {
+        margin-top: 75px !important;
+    }
+
+    .box-img-hover img {
+        height: 200px !important;
+        object-fit: contain;
+    }
+</style>
+<section>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Assets/Admin/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Assets/Admin/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Assets/Admin/css/custom.css">
+
+
+    <!-- Start Shop Page  -->
+    <div class="shop-box-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-right">
+                    <div class="right-product-box">
+                        <div class="row product-categorie-box">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                    <div class="row">
+                                        @foreach (Product item in Model as List<Product>)
+                                        {
+                                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <div class="type-lb">
+                                                            <p class="new">New</p>
+                                                        </div>
+                                                        <img src="@item.Img" class="img-fluid" alt="Image">
+                                                        <div class="mask-icon">
+                                                            <ul>
+                                                                <li><a href="#" onclick="return location.href = '/Home/Detail/@item.ID'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                            </ul>
+                                                            <a class="cart" href="#" onclick="AddToCart(@item.ID,'@item.Img','@item.Name',@item.Price)">Add to Cart</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="why-text">
+                                                        <a href="#">@item.Name</a>
+                                                        <h5>@(string.Format("{0:#,##0}", item.Price)) ₫</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ ALL JS FILES
+<script src="~/Assets/Admin/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/Admin/js/popper.min.js"></script>
+<script src="~/Assets/Admin/js/bootstrap.min.js"></script>
+ ALL PLUGINS
+<script src="~/Assets/Admin/js/jquery.superslides.min.js"></script>
+<script src="~/Assets/Admin/js/bootstrap-select.js"></script>
+<script src="~/Assets/Admin/js/inewsticker.js"></script>
+<script src="~/Assets/Admin/js/bootsnav.js."></script>
+<script src="~/Assets/Admin/js/images-loded.min.js"></script>
+<script src="~/Assets/Admin/js/isotope.min.js"></script>
+<script src="~/Assets/Admin/js/owl.carousel.min.js"></script>
+<script src="~/Assets/Admin/js/baguetteBox.min.js"></script>
+<script src="~/Assets/Admin/js/jquery-ui.js"></script>
+<script src="~/Assets/Admin/js/jquery.nicescroll.min.js"></script>
+<script src="~/Assets/Admin/js/form-validator.min.js"></script>
+<script src="~/Assets/Admin/js/contact-form-script.js"></script>
+<script src="~/Assets/Admin/js/custom.js"></script>
+

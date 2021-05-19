@@ -143,6 +143,9 @@
     <Compile Include="Models\Enity\Cart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enity\C__MigrationHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enity\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +165,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enity\ProductDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enity\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -916,6 +922,7 @@
     <Content Include="Content\ckfinder\_samples\standalone_v1.html" />
     <Content Include="Content\CSS\buy.css" />
     <Content Include="Content\CSS\index.css" />
+    <Content Include="Content\CSS\LayoutShare.css" />
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\registration.css" />
     <Content Include="Content\CSS\Dashboard.css" />
@@ -1014,6 +1021,10 @@
     <Content Include="Areas\Admin\Views\DashBoard\Pagging.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\PaggingOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Donhang.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\DetailDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ViewDetail.cshtml" />
     <EntityDeploy Include="Models\Enity\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1021,10 +1032,6 @@
     <Content Include="Models\Enity\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\DashBoard\PaggingOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\DashBoard\Donhang.cshtml" />
-    <Content Include="Areas\Admin\Views\DashBoard\DetailDonHang.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\ViewDetail.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

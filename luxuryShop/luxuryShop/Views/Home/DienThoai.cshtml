@@ -37,6 +37,7 @@
     div#carouselExampleControls {
         margin-top: 75px !important;
     }
+
     .box-img-hover img {
         height: 200px !important;
         object-fit: contain;
@@ -47,8 +48,7 @@
     <link rel="shortcut icon" href="~/Assets/Admin/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="~/Assets/Admin/images/apple-touch-icon.png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/Assets/Admin/css/bootstrap.min.css">
+
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/Assets/Admin/css/style.css">
     <!-- Responsive CSS -->
@@ -64,11 +64,11 @@
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
                         @*<div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
-                            </form>
-                        </div>*@
+                                <form action="#">
+                                    <input class="form-control" placeholder="Search here..." type="text">
+                                    <button type="submit"> <i class="fa fa-search"></i> </button>
+                                </form>
+                            </div>*@
                         <div class="filter-sidebar-left">
                             <div class="title-left">
                                 <h3>Categories</h3>
@@ -172,17 +172,17 @@
                                         </div>
                                     </li>
                                     @*<li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios9" value="declater" type="radio">
-                                            <label for="Radios9"> Mighty Healthy </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios10" value="declater" type="radio">
-                                            <label for="Radios10"> Fiberops </label>
-                                        </div>
-                                    </li>*@
+                                            <div class="radio radio-danger">
+                                                <input name="survey" id="Radios9" value="declater" type="radio">
+                                                <label for="Radios9"> Mighty Healthy </label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radio radio-danger">
+                                                <input name="survey" id="Radios10" value="declater" type="radio">
+                                                <label for="Radios10"> Fiberops </label>
+                                            </div>
+                                        </li>*@
                                 </ul>
                             </div>
                         </div>
@@ -213,12 +213,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="why-text">
-                                                        <a href="#">@item.Name</a>
+                                                        <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'">@item.Name</a>
                                                         <h5>@(string.Format("{0:#,##0}", item.Price)) ₫</h5>
                                                     </div>
                                                 </div>
                                             </div>
-                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -230,11 +230,11 @@
     </div>
 </section>
 
- ALL JS FILES 
+@*ALL JS FILES*@
 <script src="~/Assets/Admin/js/jquery-3.2.1.min.js"></script>
 <script src="~/Assets/Admin/js/popper.min.js"></script>
 <script src="~/Assets/Admin/js/bootstrap.min.js"></script>
- ALL PLUGINS 
+@*ALL PLUGINS*@
 <script src="~/Assets/Admin/js/jquery.superslides.min.js"></script>
 <script src="~/Assets/Admin/js/bootstrap-select.js"></script>
 <script src="~/Assets/Admin/js/inewsticker.js"></script>
@@ -257,10 +257,10 @@
             max: 50000000,
             values: [1000000, 10000000],
             slide: function (event, ui) {
-                $("#amount").val(ui.values[0] + "đ - " +  ui.values[1] + "đ");
+                $("#amount").val(ui.values[0] + "đ - " + ui.values[1] + "đ");
             }
         });
-        $("#amount").val($("#slider-range").slider("values", 0)+"đ - " +
-             $("#slider-range").slider("values", 1)+"đ");
+        $("#amount").val($("#slider-range").slider("values", 0) + "đ - " +
+            $("#slider-range").slider("values", 1) + "đ");
     });
 </script>

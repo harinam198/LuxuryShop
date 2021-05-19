@@ -1,27 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="luxuryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" />
-    <Property Name="OrderName" Type="nvarchar" MaxLength="50" />
-    <Property Name="OrderMobile" Type="varchar" MaxLength="10" />
-    <Property Name="OrderAddress" Type="nvarchar(max)" />
-    <Property Name="OrderEmail" Type="varchar" MaxLength="100" />
+    <Property Name="OrderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderMobile" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="OrderAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderEmail" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" />
-    <Property Name="Img" Type="nvarchar(max)" />
-    <Property Name="Price" Type="int" />
-    <Property Name="Category" Type="int" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Img" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Category" Type="int" Nullable="false" />
     <Property Name="BestSeller" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Sale" Type="nvarchar(max)" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductDetail">
     <Key>
@@ -35,9 +47,24 @@
     <Property Name="TotalPrice" Type="int" />
     <Property Name="ProductID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="char" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="luxuryModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

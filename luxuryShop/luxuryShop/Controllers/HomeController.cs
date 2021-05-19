@@ -17,15 +17,16 @@ namespace luxuryShop.Controllers
         public ActionResult Index()
         {
             var Product = new Category();
-            ViewBag.Dienthoai = Product.Dienthoai();
+            ViewBag.Dienthoai = Product.Dienthoai(8);
             ViewBag.Tainghe = Product.Tainghe();
             ViewBag.Dongho = Product.Dongho();
+            ViewBag.BestSeller = Product.BestSeller();
             return View();
         }
         public ActionResult DienThoai()
         {
             var Product = new Category();
-            ViewBag.Category = Product.Dienthoai();
+            ViewBag.Category = Product.Dienthoai(100);
             return View();
         }
         public ActionResult Tainghe()

@@ -14,9 +14,15 @@ namespace luxuryShop.Areas.Admin.Controllers
     {
         public luxuryEntities db = new luxuryEntities();
         // GET: Admin/DashBoard
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserInformation"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Login");
+
         }
 
         public PartialViewResult Pagging(int pageIndex = 1, int pageSize = 5)

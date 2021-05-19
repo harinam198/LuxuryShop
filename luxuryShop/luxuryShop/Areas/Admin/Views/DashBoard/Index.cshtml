@@ -28,18 +28,28 @@
                     <form id="danhsachsanpham-form" class="tm-edit-product-form">
                         <div class="form-group mb-3">
                             <label for="name">
-                                Product Name
+                                Tên Sản phẩm
                             </label>
                             <input id="name" name="Name" type="text" class="form-control validate" required="">
                         </div>
                         <div class="form-group mb-3">
                             <label for="price">
-                                Product Price
+                                Thương hiệu
+                            </label>
+                            <input id="brand" name="Brand" type="text" class="form-control validate" required="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="price">
+                                Giá tiền
                             </label>
                             <input id="price" name="Price" type="text" class="form-control validate" required="">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="description">Description</label>
+                            <label for="description">Ưu đãi</label>
+                            <textarea id="sale" name="Sale" class="form-control validate" rows="3" required=""></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="description">Mô tả</label>
                             <textarea id="description" name="Description" class="form-control validate" rows="3" required=""></textarea>
                         </div>
                         <div class="form-group mb-3">
@@ -47,10 +57,10 @@
                             <input id="txtImage" name="Img" type="text" class="form-control validate" required="">
                         </div>
                         <div class="form-group-file mt-3 mb-3">
-                            <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
+                            <input type="button" class="btn btn-dark btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" id="btnSelectImage">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="category">Category:</label>
+                            <label for="category">Thể loại:</label>
                             <input type="radio" id="radio0" value="0" name="Category" checked>
                             <span>Điện thoại </span>
                             <input type="radio" id="radio1" value="1" name="Category">
@@ -60,7 +70,7 @@
                         </div>
                         <div class="form-check mb-3">
                             <label for="Check"></label>
-                            <input type="radio" id="radio3" value="NULL" name="BestSeller" checked>
+                            <input type="radio" id="radio3" value="" name="BestSeller" checked>
                             <span>Không BestSeller</span>
                             <input type="radio" id="radio4" value="1" name="BestSeller">
                             <span>Có BestSeller</span>
@@ -68,7 +78,7 @@
                     </form>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary btn-block text-uppercase" onclick="Add();">Add Product Now</button>
+                    <button class="btn btn-dark btn-block text-uppercase" onclick="Add();">Add Product Now</button>
                 </div>
             </div>
         </div>

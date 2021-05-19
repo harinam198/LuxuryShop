@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link href="~/Content/CSS/index.css" rel="stylesheet" />
-    <link href="~/Content/CSS/login.css" rel="stylesheet" />
+    @*<link href="~/Content/CSS/LayoutShare.css" rel="stylesheet" />*@
+
+    @*<link href="~/Content/CSS/index.css" rel="stylesheet" />*@
+    @*<link href="~/Content/CSS/login.css" rel="stylesheet" />*@
     <link rel="shortcut icon" href="~/Content/IMAGES/luxurylogo.jpg">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -21,7 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     @*@Styles.Render("~/Content/CSS/layoutshare.css")*@
     @*@Scripts.Render("~/bundles/modernizr")*@
-    <link href="~/Content/CSS/layoutshare.css" rel="stylesheet" />
 
 
     <!-- Site Icons -->
@@ -59,15 +61,25 @@
             background-color: white;
             color: gray;
         }
+
         .float-right {
             float: right !important;
             margin-top: 5px;
         }
+
         li.total {
             margin-top: 20px;
         }
+
         .nextprepage {
             margin-bottom: 20px;
+        }
+
+        .menu-dt {
+            list-style: none;
+            margin-left: 285px;
+            margin-top: -237px;
+            z-index: 100000;
         }
     </style>
 </head>
@@ -107,32 +119,35 @@
                     </li>
                     <li class="nav-item " id="list-dt">
                         <a class="nav-link" href="@Url.Action("Dienthoai","Home")">Điện thoại <span class="sr-only">(current)</span></a>
-                        <ul id="list">
-                            <li class="nav-1-1 first parent">
-                                <a href="">Apple</a>
-                                <ul style="padding-left: 10px;padding-right: 5px;">
-                                    <li><a href="">iPhone 11 | 11 Pro | 11 ProMax</a></li>
-                                    <li>
-                                    <li><a href="">iPhone XS | XS Max</a></li>
-                                    <li>
-                                    <li><a href="">iPhone X | XR</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 8 | 8 Plus</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 7 | 7 Plus</a></li>
-                                    <li>
-                                    <li><a href="">iPhone 6S | 6S Plus</a></li>
-                                    <li>
+                        @*<ul id="list">
+                                <li class="nav-1-1 first parent">
+                                    <a href="">Apple</a>
+                                    <ul style="padding-left: 10px;padding-right: 5px;">
+                                        <li><a href="">iPhone 11 | 11 Pro | 11 ProMax</a></li>
+                                        <li>
+                                        <li><a href="">iPhone XS | XS Max</a></li>
+                                        <li>
+                                        <li><a href="">iPhone X | XR</a></li>
+                                        <li>
+                                        <li><a href="">iPhone 8 | 8 Plus</a></li>
+                                        <li>
+                                        <li><a href="">iPhone 7 | 7 Plus</a></li>
+                                        <li>
+                                        <li><a href="">iPhone 6S | 6S Plus</a></li>
+                                        <li>
+                                    </ul>
+                                </li>
+                                <ul class="menu-dt">
+                                    <a href="">SAMSUNG</a>
+                                    <li class=""><a href="">SONY</a></li>
+                                    <li class=""><a href="">OPPO</a></li>
+                                    <li class=""><a href="">VSMART</a></li>
+                                    <li class=""><a href="">XIAOMI</a></li>
+                                    <li class=""><a href="">ASUS</a></li>
+                                    <li class=""><a href="">HUWEI</a></li>
                                 </ul>
-                            </li>
-                            <li class="menu-dt" style="margin-left: 240px; margin-top: -238px"><a href="">SAMSUNG</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">SONY</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">OPPO</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">VSMART</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">XIAOMI</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">ASUS</a></li>
-                            <li class="menu-dt" style="margin-left: 240px;"><a href="">HUWEI</a></li>
-                        </ul>
+
+                            </ul>*@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Tainghe","Home")">Âm Thanh</a>
@@ -145,30 +160,21 @@
                     </li>
                     <li class="nav-item" id="dv">
                         <a class="nav-link" href="#" id="sv">Dịch vụ</a>
-                        <ul id="service">
-                            <li><a href="#">Thay pin</a></li>
-                            <li><a href="#">Ép kính</a></li>
-                            <li><a href="#">Thay màn hình</a></li>
-                            <li><a href="#">Sửa chữa</a></li>
-                        </ul>
+                        @*<ul id="service">
+                                <li><a href="#">Thay pin</a></li>
+                                <li><a href="#">Ép kính</a></li>
+                                <li><a href="#">Thay màn hình</a></li>
+                                <li><a href="#">Sửa chữa</a></li>
+                            </ul>*@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Khuyến mãi</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login","Admin")">
                             Đăng nhập
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Account</a>
-                            <div class="dropdown-divider"></div> -->
-                            <a class="dropdown-item" href="@Url.Action("Login","Admin")">Đăng nhập</a>
-                            <!-- java không link đi đâu cả -->
-                            <a class="dropdown-item" href="register.html">Đăng ký</a>
-                            <!-- <a class="dropdown-item" href="javascripts:void(0);" data-toggle="modal" data-target="#modallogout">Log out</a> -->
-                        </div>
                     </li>
                     <li class="side-menu" onclick="show_Cart()">
                         <div class="nav-link">
@@ -351,8 +357,8 @@
             $('#count').text(sosp);
             if (giohang.length == 0) {
                 var cartNull = `<li class="none-product">
-                                            <h4> Chưa có sản phẩm nào</h4>
-                                        </li>`;
+                                                <h4> Chưa có sản phẩm nào</h4>
+                                            </li>`;
                 $('#cart-item').html(cartNull);
             }
             showCart();
@@ -362,41 +368,41 @@
             var listShowCart = "";
             for (i in giohang) {
                 listShowCart += `
-                            <li class="li-itemCart" data-id='${giohang[i].ma}'>
-                                <a href="#" class="photo"><img src="${giohang[i].img}" class="cart-thumb" alt=""></a>
-                                <h6><a href="#">${giohang[i].ten}</a></h6>
-                                <p>${giohang[i].soluong} - <span class="price">${giohang[i].gia}</span></p>
-                                <div class="cart-close" data-id='${giohang[i].ma}' data-qty='${giohang[i].soluong}' data-price='${giohang[i].gia}'>
-                                    <i class="far fa-times-circle" id="cart-close"></i>
-                                </div>
-                            </li>`;
+                                <li class="li-itemCart" data-id='${giohang[i].ma}'>
+                                    <a href="#" class="photo"><img src="${giohang[i].img}" class="cart-thumb" alt=""></a>
+                                    <h6><a href="#">${giohang[i].ten}</a></h6>
+                                    <p>${giohang[i].soluong} - <span class="price">${giohang[i].gia}</span></p>
+                                    <div class="cart-close" data-id='${giohang[i].ma}' data-qty='${giohang[i].soluong}' data-price='${giohang[i].gia}'>
+                                        <i class="far fa-times-circle" id="cart-close"></i>
+                                    </div>
+                                </li>`;
 
                 var payCart = "";
                 for (i in giohang) {
                     payCart += `<tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-                                            <img class="img-fluid" src="${giohang[i].img}" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-                                            ${giohang[i].ten}
-                                        </a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>${giohang[i].gia}đ</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="${giohang[i].soluong}" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>${giohang[i].gia * giohang[i].soluong}đ</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>`;
+                                        <td class="thumbnail-img">
+                                            <a href="#">
+                                                <img class="img-fluid" src="${giohang[i].img}" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="name-pr">
+                                            <a href="#">
+                                                ${giohang[i].ten}
+                                            </a>
+                                        </td>
+                                        <td class="price-pr">
+                                            <p>${giohang[i].gia}đ</p>
+                                        </td>
+                                        <td class="quantity-box"><input type="number" size="4" value="${giohang[i].soluong}" min="0" step="1" class="c-input-text qty text"></td>
+                                        <td class="total-pr">
+                                            <p>${giohang[i].gia * giohang[i].soluong}đ</p>
+                                        </td>
+                                        <td class="remove-pr">
+                                            <a href="#">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>`;
                 }
             }
             $("#cart-item").html(listShowCart);
@@ -428,8 +434,8 @@
             $('#totalCost').text(0);
             //$('#cart-item').html('');
             var cartNull = `<li class="none-product">
-                                        <h4> Chưa có sản phẩm nào</h4>
-                                    </li>`;
+                                            <h4> Chưa có sản phẩm nào</h4>
+                                        </li>`;
             $('#cart-item').html(cartNull);
             localStorage.clear();
             //toastr.success('Bạn đã xóa tất cả sản phẩm trong giỏ hàng', 'SUCCESS!!!');

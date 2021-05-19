@@ -2,7 +2,19 @@
 @{ ViewBag.Title = "Home Page";
     var Dienthoai = (List<luxuryShop.Models.Enity.Product>)ViewBag.Dienthoai;
     var Amthanh = (List<luxuryShop.Models.Enity.Product>)ViewBag.Tainghe;
-    var Dongho = (List<luxuryShop.Models.Enity.Product>)ViewBag.Dongho; }
+    var Dongho = (List<luxuryShop.Models.Enity.Product>)ViewBag.Dongho;
+    var BestSeller = (List<luxuryShop.Models.Enity.Product>)ViewBag.BestSeller;}
+
+<style>
+    .card-body{
+        width: 253px;
+        height: 24vh;
+    }
+    #dt, #at, #dh, #bs{
+        margin-top: 10px;
+    }
+</style>
+
 <section>
     <div class="container" id="head">
         <div class="row">
@@ -69,8 +81,8 @@
                     </div>
                 </div>
             </div>
-            <div class="container" id="dt-special">
-                <div class="row">
+            @*<div class="container" id="dt-special">*@
+                <div class="row" id="dt">
                     @foreach (var item in Dienthoai)
                     {
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
@@ -82,14 +94,13 @@
                                     <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'" class="card-title">@item.Name</a>
                                     <p class="card-text">
                                         <span>@(string.Format("{0:#,##0}", item.Price)) ₫</span>
-                                        <span class="old-price">19.990.000 ₫</span>
-                                        <br> @item.Description
+
+                                        <br> @item.Sale
                                     </p>
                                 </div>
                             </div>
                         </div>
-                     }
-
+                    }
                     <div class="clear"></div>
                 </div>
                 <div class="module el-product-group" style="margin-top: -15px;">
@@ -112,123 +123,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="dt-special">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/airpod2.png" alt="Tai nghe Bluetooth Apple AirPods 2 VN/A" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Apple AirPods 2 VN/A (NB.229)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">3.590.000 ₫</span>
-                                        <span class="old-price">3.990.000 ₫</span>
-                                    </p>
-                                </div>
+                @*<div class="container" id="dt-special">*@
+                    <div class="row" id="at">
+                        @foreach (var item in Amthanh)
+                        {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+                        <div class="card round float-right">
+                            <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'">
+                                <img src="@item.Img" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'" class="card-title">@item.Name</a>
+                                <p class="card-text">
+                                    <span>@(string.Format("{0:#,##0}", item.Price)) ₫</span>
+
+                                    <br> @item.Sale
+                                </p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/airpod-pro.jpg" alt="Apple AirPods Pro VN/A" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Apple AirPods Pro VN/A (NB.241)+</a>
-                                    <p class="card-text">
-                                        <span class="new-price">5.690.000 ₫</span>
-                                        <span class="old-price">7.990.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/redmi-airdots-20_1.jpg" alt="Tai nghe không dây Xiaomi True Wireless Earbuds Basic" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Xiaomi True Wireless Earbuds Basic (NA.211)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">490.000 ₫</span>
-                                        <span class="old-price">550.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/ss-galaxy-buds.jpg" alt="Tai nghe Bluetooth Samsung Galaxy Buds" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Samsung Galaxy Buds (NB.157)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">1.990.000 ₫</span>
-                                        <span class="old-price">4.490.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/tai-nghe-aukey-t21-01.png" alt="Tai nghe Bluetooth Aukey T21" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Tai nghe Bluetooth Aukey T21 (NA.231)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">790.000 ₫</span>
-                                        <span class="old-price">1.190.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/defunc-true-go-tu-hao-VN.png" alt="Tai nghe không dây Defunc True Go Tự hào Việt Nam" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Tai nghe không dây Defunc True Go (NB.256)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">690.000 ₫</span>
-                                        <span class="old-price">1.490.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/ss-galaxy-buds-r170-sm-r170nzsaxef-casetopcombinationsilver-174470918.jpg" alt="Tai nghe không dây Samsung Galaxy Buds+" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Samsung Galaxy Buds+ (NB.289)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">2.690.000 ₫</span>
-                                        <span class="old-price">4.490.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/sony-wf-1000xm3-wire-3-2_800x0w.jpg" alt="Tai nghe không dây chống ồn Sony WF-1000XM3" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Tai nghe không dây chống ồn Sony WF-1000XM3</a>
-                                    <p class="card-text">
-                                        <span class="new-price">4.190.000 ₫</span>
-                                        <span class="old-price">5.490.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
+                    </div>}
+                        <div class="clear"></div>
+                    </div>  
                 <div class="module el-product-group" style="margin-top: -15px;">
                     <div class="lt-product-group">
                         <div class="section-header" style="margin-top: 30px;">
@@ -250,121 +165,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="dt-special">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/ss-galaxy-watch-active-2.jpg" alt="Samsung Galaxy Watch Active 2" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Samsung Galaxy Watch Active 2</a>
-                                    <p class="card-text">
-                                        <span class="new-price">4.500.000 ₫</span>
-                                        <span class="old-price">7.490.000 ₫</span>
-                                        <br>
-                                    </p>
+                @*<div class="container" id="dt-special">*@
+                    <div class="row" id="dh">
+                        @foreach (var item in Dongho)
+                        {
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+                                <div class="card round float-right">
+                                    <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'">
+                                        <img src="@item.Img" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'" class="card-title">@item.Name</a>
+                                        <p class="card-text">
+                                            <span>@(string.Format("{0:#,##0}", item.Price)) ₫</span>
+
+                                            <br> @item.Sale
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                        }
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="module el-product-group" style="margin-top: -15px;">
+                    <div class="lt-product-group">
+                        <div class="section-header" style="margin-top: 30px;">
+                            <div class="left">
+                                <h2>
+                                    <a style="color: black;" href="">BEST SELLER</a>
+                                </h2>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/ss-galaxy-active-2-4G.jpg" alt="Samsung Galaxy Watch Active 2 4G LTE 40mm Vỏ Nhôm" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">SS Galaxy Watch Active 2 4G LTE 40mm (PKDH.029)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">5.400.000 ₫</span>
-                                        <span class="old-price">8.490.000 ₫</span>
-                                    </p>
+                    </div>
+                </div>
+                @*<div class="container" id="dt-special">*@
+                    <div class="row" id="bs">
+                        @foreach (var item in BestSeller)
+                        {
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+                                <div class="card round float-right">
+                                    <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'">
+                                        <img src="@item.Img" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="#" onclick="return location.href = '/Home/Detail/@item.ID'" class="card-title">@item.Name</a>
+                                        <p class="card-text">
+                                            <span>@(string.Format("{0:#,##0}", item.Price)) ₫</span>
+
+                                            <br> @item.Sale
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/SS-Galaxy-Watch-Active-SM-R500.jpg" alt="Samsung Galaxy Watch Active SM-R500" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">SS Galaxy Watch Active SM-R500</a>
-                                    <p class="card-text">
-                                        <span class="new-price">2.950.000 ₫</span>
-                                        <span class="old-price">5.490.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/Xiaomi-Amazfit-GTS.jpg" alt="Đồng hồ thông minh Xiaomi Amazfit GTS" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Xiaomi Amazfit GTS (PKDH.009)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">2.690.000 ₫</span>
-                                        <span class="old-price">2.990.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/Samsung-Galaxy-Watc- Active-2-44mm.jpg" alt="Samsung Galaxy Watch Active 2 44mm Vỏ Nhôm" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">SS Galaxy Watch Active 2 44mm (PKDH.005)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">4.900.000 ₫</span>
-                                        <span class="old-price">7.990.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/Samsung Galaxy Watch Active 2 44mm Vỏ Thép.jpg" alt="Samsung Galaxy Watch Active 2 44mm Vỏ Thép" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">SS Galaxy Watch Active 2 44mm (PKDH.003)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">6.650.000 ₫</span>
-                                        <span class="old-price">9.990.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/Samsung Galaxy Watch Active 2 4G LTE 44mm Vỏ Nhôm.jpg" alt="Samsung Galaxy Watch Active 2 4G LTE 44mm Vỏ Nhôm" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">SS Galaxy Watch Active 2 4G LTE 44mm (PKDH.030)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">5.850.000 ₫</span>
-                                        <span class="old-price">8.990.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-                            <div class="card round float-right" id="line2">
-                                <a href="">
-                                    <img src="~/Content/IMAGES/mi-band-4-6-600x600.jpg" alt="Vòng đeo tay thông minh Xiaomi Mi Band 4" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <a href="#" class="card-title">Vòng đeo tay thông minh Xiaomi Mi Band 4 (MB.201)</a>
-                                    <p class="card-text">
-                                        <span class="new-price">650.000 ₫</span>
-                                        <span class="old-price">850.000 ₫</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                     <div class="clear"></div>
                 </div>

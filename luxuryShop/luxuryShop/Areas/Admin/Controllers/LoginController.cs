@@ -21,7 +21,8 @@ namespace luxuryShop.Areas.Admin.Controllers
             {
                 if (model.Email == "hainam" && model.Password == "123456")
                 {
-                    Session["UserInformation"] = "hainam123456";
+                    Session.Add("UserInformation", "hainam123456");
+                    //Session["UserInformation"] = "hainam123456";
                     return Json(new { Code = 200 }, JsonRequestBehavior.AllowGet);
                 }
                 return Json(new { Code = 500, ErrorMessage = "Đăng nhập thất bại" }, JsonRequestBehavior.AllowGet);
@@ -30,6 +31,12 @@ namespace luxuryShop.Areas.Admin.Controllers
             {
                 return Json(new { Code = 500, ErrorMessage = "Đăng nhập thất bại" }, JsonRequestBehavior.AllowGet);
             }
+        }
+        public ActionResult Logout()
+        {
+            Session.Remove("UserInformation");
+            Session.Abandon();
+                return RedirectToAction("/");
         }
     }
 }
